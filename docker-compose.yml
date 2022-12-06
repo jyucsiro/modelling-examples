@@ -1,0 +1,18 @@
+version: "3"
+services:
+  notebook:
+    build: .
+    image: modelling-examples-notebooks
+    volumes:
+      - ".:/home/jovyan/work"
+    ports:
+      - "${PORT:-8888}:8888"
+
+  fibonacci:
+    build: 
+      context: .
+      dockerfile: Dockerfile.fib
+    environment:
+      PARAM1: 200
+    command: ./fib-entrypoint.sh
+

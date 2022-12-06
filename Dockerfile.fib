@@ -1,0 +1,23 @@
+FROM python:3.10
+
+RUN pip install papermill
+
+# package dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# notebook execution order from YAML config
+#ARG NOTEBOOKS
+#ENV NOTEBOOKS=${NOTEBOOKS}
+
+# prepare entrypoint script
+COPY fib-entrypoint.sh .
+COPY *.ipynb .
+COPY . .
+
+
+# these parameters will be injected at run-time
+ENV PARAM1=
+ENV PARAM2=
+
+CMD ./fib-entrypoint.sh
