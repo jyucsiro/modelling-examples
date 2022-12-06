@@ -17,3 +17,9 @@ You can then navigate to `http://localhost:8888` to launch the jupyter notebooks
 You will need the token which is in the docker-compose logs
 
 
+## Running the fibonacci model via docker
+
+```
+$ docker compose run -e PARAM1=1000 fibonacci
+```
+
